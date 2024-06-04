@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+// import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerImg from "../assets/img/header-img.svg";
 
@@ -13,9 +13,9 @@ export const Banner = () => {
     useEffect(() => {
         let ticker = setInterval(() => {
             tick();
-        },delta)
+        }, delta)
 
-        return () => {  clearInterval(ticker)};
+        return () => { clearInterval(ticker) };
     }, [text])
 
     const tick = () => {
@@ -26,29 +26,30 @@ export const Banner = () => {
         setText(updatedText);
 
         if (isDeleting) {
-            setDelta( prevDelta => prevDelta /2)
-    }
-
-        if (!isDeleting && updatedText === fullText) {
-            setisDeleting( true );
+            setDelta(prevDelta => prevDelta / 2)
         }
 
-    return (
-        <section className="banner" id="home">
-        <Container>
-        <Row className="align-items-center">
-        <Col xs={12} m={6} xl={7}>
-            <span className="tagline"> Welcome to my Portfolio</span>
-            <h1>{`Hi I am Webdecoded`}<span className="wrap">web developer</span></h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium numquam quia voluptate, laborum ducimus, ad qui vel delectus in fuga, reiciendis temporibus nostrum sunt facilis id ratione? Eligendi, iusto delectus!</p>
-                        <button onClick={() => console.log('connect')}>Let's Connect <ArrowRightCircle size={25}/></button>
-        </Col>
-            <Col xs={12} m={6} xl={5}>
-                        <img src={headerImg} alt="Header Img" />
-            </Col>
-        </Row>
-        </Container>
-        </section>
+        if (!isDeleting && updatedText === fullText) {
+            setIsDeleting(true);
+        }
 
-    )
+        return (
+            <section className="banner" id="home">
+                <div>
+                    <div className="align-items-center">
+                        <div xs={12} m={6} xl={7}>
+                            <span className="tagline"> Welcome to my Portfolio</span>
+                            <h1>{`Hi I am Webdecoded`}<span className="wrap">web developer</span></h1>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium numquam quia voluptate, laborum ducimus, ad qui vel delectus in fuga, reiciendis temporibus nostrum sunt facilis id ratione? Eligendi, iusto delectus!</p>
+                            <button onClick={() => console.log('connect')}>Let's Connect <ArrowRightCircle size={25} /></button>
+                        </div>
+                        <div xs={12} m={6} xl={5}>
+                            <img src={headerImg} alt="Header Img" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        )
+    }
 }
